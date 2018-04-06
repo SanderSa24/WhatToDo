@@ -2,7 +2,8 @@ package com.example.sander.whattodo.DB;
 
 import java.io.Serializable;
 
-
+//Implements standard Java interface.
+//Represents one single activity in the app
 public class ToDo implements Serializable{
 
     private int id;

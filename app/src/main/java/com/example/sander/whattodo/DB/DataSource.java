@@ -54,20 +54,12 @@ public class DataSource {
     }
 
 
-    /**
-     * Finds all game objects.
-     *
-     * @return a cursor holding the game objects.
-     */
+    //return cursor holding objects
     public Cursor findAll() {
         return mDatabase.query(ToDoContract.ToDoEntry.TABLE_NAME, ToDo_ALL_COLUMNS, null, null, null, null, null);
     }
 
-    /**
-     * Delete a single entity from the mDatabase.
-     *
-     * @param id the id of the entity to be deleted.
-     */
+    //delete object with the specified id
     public void delete(int id) {
 
         mDatabase.delete(ToDoContract.ToDoEntry.TABLE_NAME, ToDoContract.ToDoEntry.COLUMN_NAME_ID + " =?",

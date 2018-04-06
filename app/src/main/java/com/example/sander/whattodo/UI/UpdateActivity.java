@@ -51,28 +51,28 @@ public class UpdateActivity extends AppCompatActivity {
         typeSpinner.setAdapter(typeAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        // Based on the action we will add or update a game
+        // Based on the action we will add or update a activity
         if (Objects.equals(getIntent().getAction(), Intent.ACTION_INSERT)) {
-            // We are adding a new game
+            // We are adding a new activity
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    saveGame();
+                    saveActivity();
                 }
             });
         } else {
-            // We are updating an existing game so start by retrieving it from the intent
-            todo = (ToDo) getIntent().getSerializableExtra("game");
+            // We are updating an existing activity so start by retrieving it from the intent
+            todo = (ToDo) getIntent().getSerializableExtra("activity");
             // Set the values for the views
             titleInput.setText(todo.getTitle());
             infoInput.setText(todo.getInfo());
-            // Get the position of the game's status within the adapter
+            // Get the position of the activity status within the adapter
             int spinnerPosition = typeAdapter.getPosition(todo.getType());
             typeSpinner.setSelection(spinnerPosition);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    updateGame();
+                    updateActivity();
                 }
             });
         }
@@ -80,7 +80,7 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
 
-    public void saveGame() {
+    public void saveActivity() {
         String title = titleInput.getText().toString();
         String info = infoInput.getText().toString();
         String activityType = typeSpinner.getSelectedItem().toString();
@@ -88,11 +88,11 @@ public class UpdateActivity extends AppCompatActivity {
         if (title.isEmpty()) {
             titleInput.setError(getString(R.string.error_activity_add_title_required));
         }  else {
-            ToDo game = new ToDo(title, activityType, info);
+            ToDo todo = new ToDo(title, activityType, info);
 
             DataSource dataSource = new DataSource(this);
             dataSource.open();
-            dataSource.save(game);
+            dataSource.save(todo);
 
             Toast.makeText(this, R.string.message_activity_saved, Toast.LENGTH_LONG).show();
 
@@ -100,7 +100,7 @@ public class UpdateActivity extends AppCompatActivity {
         }
     }
 
-    private void updateGame() {
+    private void updateActivity() {
         // Get the input from the Views
         String title = titleInput.getText().toString();
         String info = infoInput.getText().toString();

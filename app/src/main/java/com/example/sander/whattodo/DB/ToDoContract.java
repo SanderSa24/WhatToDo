@@ -4,8 +4,7 @@ import android.provider.BaseColumns;
 
 
 public final class ToDoContract {
-    // To prevent someone from accidentally instantiating the contract class,
-    // make the constructor private.
+    // Specifies the layout of the database
     private ToDoContract() {}
 
     /* Inner class that defines the table contents */

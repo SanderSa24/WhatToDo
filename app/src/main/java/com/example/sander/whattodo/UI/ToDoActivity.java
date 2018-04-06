@@ -44,11 +44,12 @@ public class ToDoActivity extends AppCompatActivity implements ToDoAdapter.OnToD
         mRecyclerView = findViewById(R.id.todoList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
+        //simple animation when items get added or removed
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
         itemAnimator.setAddDuration(100L);
         itemAnimator.setRemoveDuration(100L);
         mRecyclerView.setItemAnimator(itemAnimator);
-
+        //Attached recyclerview to itemtouchhelper
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(itemTouchCallback());
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
 
@@ -97,7 +98,7 @@ public class ToDoActivity extends AppCompatActivity implements ToDoAdapter.OnToD
 
     private void updateActivity(ToDo todo) {
         Intent intent = new Intent(this, UpdateActivity.class);
-        intent.putExtra("game", todo);
+        intent.putExtra("activity", todo);
         intent.setAction(Intent.ACTION_EDIT);
         startActivity(intent);
     }
@@ -125,17 +126,17 @@ public class ToDoActivity extends AppCompatActivity implements ToDoAdapter.OnToD
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                // Get the id of the game object on which we performed the swipe operation
+                // Get the id of the activity object on which we performed the swipe operation
                 ToDo todo = ((ToDoAdapter.ToDoViewHolder) viewHolder).getToDo();
-                // Delete the game object from our database
+                // Delete the activity object from our database
                 mDataSource.delete(todo.getId());
                 // Get a new cursor from our database
                 Cursor cursor = mDataSource.findAll();
                 mAdapter.swapCursor(cursor);
                 mAdapter.notifyDataSetChanged();
-                // Show a Toast message to inform the user that the game was deleted, note that we
+                // Show a Toast message to inform the user that the activity was deleted, note that we
                 // are calling makeText from within an anonymous class so we have to explicitly tell
-                // it to use GamesActivity.this instead of just this as that points to the anonymous
+                // it to use todoActivity.this instead of just this as that points to the anonymous
                 // class
                 Toast.makeText(ToDoActivity.this, R.string.message_activity_deleted, Toast.LENGTH_SHORT).show();
             }

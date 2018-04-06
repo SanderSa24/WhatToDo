@@ -29,7 +29,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
 
     @Override
     public ToDoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Inflate our item_game layout
+        // Inflate our item_activity layout
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_activity, parent, false);
         // Instantiate a ToDoViewHolder and pass our layout as it's view
@@ -40,13 +40,13 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
     public void onBindViewHolder(ToDoViewHolder holder, int position) {
         // Move the cursor to the right position
         cursor.moveToPosition(position);
-        // Create a game object from the cursor's data
+        // Create a activity object from the cursor's data
         ToDo todo = new ToDo();
         todo.setId(cursor.getInt(cursor.getColumnIndex(ToDoContract.ToDoEntry.COLUMN_NAME_ID)));
         todo.setTitle(cursor.getString(cursor.getColumnIndex(ToDoContract.ToDoEntry.COLUMN_NAME_TITLE)));
         todo.setType(cursor.getString(cursor.getColumnIndex(ToDoContract.ToDoEntry.COLUMN_NAME_TYPE)));
         todo.setInfo(cursor.getString(cursor.getColumnIndex(ToDoContract.ToDoEntry.COLUMN_NAME_INFO)));
-        // Bind the game object to the view
+        // Bind the activity object to the view
         holder.bind(todo);
     }
 
@@ -68,7 +68,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
 
     /**
      * A wrapper class representing a single view or row within our RecyclerView. The ViewHolder
-     * holds a reference to all the views and the game object.
+     * holds a reference to all the views and the activity object.
      */
     class ToDoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -99,7 +99,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
         public void onClick(View view) {
             // Move the cursor to the right position
             cursor.moveToPosition( getAdapterPosition());
-            // Create a game object from the cursor's data
+            // Create a activity object from the cursor's data
             ToDo todo = new ToDo();
             todo.setId(cursor.getInt(cursor.getColumnIndex(ToDoContract.ToDoEntry.COLUMN_NAME_ID)));
             todo.setTitle(cursor.getString(cursor.getColumnIndex(ToDoContract.ToDoEntry.COLUMN_NAME_TITLE)));
