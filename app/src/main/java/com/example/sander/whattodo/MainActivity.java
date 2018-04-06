@@ -1,5 +1,6 @@
 package com.example.sander.whattodo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.sander.whattodo.UI.ToDoActivity;
+import com.example.sander.whattodo.UI.UpdateActivity;
+import com.example.sander.whattodo.R;
+
 public class MainActivity extends AppCompatActivity {
     //Local variables
     private int currentImageIndex = 0;
@@ -15,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mImageView;
     private Button mNextButton;
     private Button mPrevButton;
-    private Button mCheckButton;
-    private RadioGroup mGroup;
+    private Button mAddButton;
 
 
     @Override
@@ -26,9 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         mNextButton = findViewById(R.id.nextButton);
         mPrevButton = findViewById(R.id.prevButton);
-        mCheckButton = findViewById(R.id.checkButton);
+        mAddButton = findViewById(R.id.addButton);
         mImageView = findViewById(R.id.imageView);
-        mGroup = findViewById(R.id.radioGroup);
 
         mImageNames = new int[]{R.drawable.games, R.drawable.gym, R.drawable.movie,R.drawable.pub,R.drawable.reading,R.drawable.youtube};
 
@@ -58,28 +61,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        mCheckButton.setOnClickListener(new View.OnClickListener() {
+        mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int radioButtonID = mGroup.getCheckedRadioButtonId();
-                View radioButton = mGroup.findViewById(radioButtonID);
-                int answerIndex = mGroup.indexOfChild(radioButton);
-                checkAnswer(answerIndex);
+                startActivity(new Intent(MainActivity.this, ToDoActivity.class));
+
             }
 
 
         });
     }
 
-    private void checkAnswer(int answer) {
-        String message;
-        if (answer == currentImageIndex) {
-            message = "Great";
-        } else {
-            message = "Wrong";
-        }
-        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-    }
+
 
 
 }

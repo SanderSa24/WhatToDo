@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">WhatToDo</string>
+    <!--Titles-->
+    <string name="title.main">What To Do</string>
+    <string name="title.activity.add">Add Activity</string>
+    <string name="title.activity.update">Update Activity</string>
+    <!--Messages-->
+    <string name="message.activity_saved">Activity has been saved.</string>
+    <string name="message.activity_modified">Activity has been modified.</string>
+    <string name="message.activity_deleted">Activity has been deleted.</string>
+    <!--Errors-->
+    <string name="error.activity.add.title_required">Title is required!</string>
+    <string name="error.activity.add.type_required">Type is required!</string>
+    <!--Activity-->
+    <string name="activity.title">Title</string>
+    <string name="activity.type">Type</string>
+    <string name="activity.info">Info</string>
+    <string-array name="activity_type">
+        <item>Video Games</item>
+        <item>Reading</item>
+        <item>Gym</item>
+        <item>Friends</item>
+        <item>Family</item>
+        <item>Movie</item>
+        <item>Social Media</item>
+    </string-array>
+    <!--Input-->
+    <string name="input.activity.title.hint">Title</string>
+    <string name="input.activity.type.hint">Type</string>
+    <string name="input.activity.info.hint">Info</string>
+    <!--Dialog-->
+    <string name="dialog.confirm.delete.message">Are you sure you want to delete this activity?</string>
+    <!--Actions-->
+    <string name="action.settings">Settings</string>
+    <string name="action.delete">Delete</string>
 </resources>
